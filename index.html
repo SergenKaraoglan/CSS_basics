@@ -29,12 +29,13 @@
                     Red: <input type="range" min="0" max="255" value="0" class="color_slider" id="red_slider">
                     Green: <input type="range" min="0" max="255" value="0" class="color_slider" id="green_slider">
                     Blue: <input type="range" min="0" max="255" value="0" class="color_slider" id="blue_slider">
-                    <!--Alpha-->
+                    Alpha: <input type="range" min="0" max="1" step="0.01" value="1" class="color_slider" id="alpha_slider">
                 </div>
                 <div class="colorValues">
                     <span id="redValue">0</span>
                     <span id="greenValue">0</span>
                     <span id="blueValue">0</span>
+                    <span id="alphaValue">1</span>
                 </div>
             </div>
 
@@ -44,7 +45,12 @@
                     <h3>Border</h3>
                     Width: <input type="range" min="0" max="100" value="0" class="border_slider" id="borderWidthSlider">
                     Radius: <input type="range" min="0" max="100" value="0" class="border_slider" id="borderRadiusSlider">
-                    <!--Styles-->
+                    Border Styles: <select name="borderStyles" id="borderStyles">
+                                        <option value="solid">Solid</option>
+                                        <option value="dotted">Dotted</option>
+                                        <option value="dashed">Dashed</option>
+                                        <option value="double">Double</option>
+                                    </select>
                 </div>
                 <div class="borderValues">
                     <span id="borderWidthValue">0</span>
@@ -52,11 +58,12 @@
                 </div>
             </div>
 
+            <!-- Text options -->
             <div class ="text">
                 <div class="textSliders">
                     <h3>Text</h3>
-                    Size: <input type="range" min="0" max="100" value="0" class="text_slider" id="textSize_slider">
-                    Spacing: <input type="range" min="0" max="100" value="0" class="text_slider" id="textSpacing_slider">
+                    Size: <input type="range" min="0" max="100" value="0" class="text_slider" id="textSizeSlider">
+                    Spacing: <input type="range" min="0" max="100" value="0" class="text_slider" id="textSpacingSlider">
                 </div>
                 <div class="textValues">
                     <span id="textSizeValue">0</span>
@@ -64,9 +71,10 @@
                 </div>
             </div>
 
+            <!-- Box options -->
             <div class ="box">
                 <div class="boxSliders">
-                    <h3>Box Model</h3>
+                    <h3>Box</h3>
                     Width: <input type="range" min="0" max="200" value="200" class="boxSlider" id="boxWidthSlider">
                     Height: <input type="range" min="0" max="100" value="100" class="boxSlider" id="boxHeightSlider">
                     <!--Padding-->

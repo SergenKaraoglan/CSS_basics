@@ -1,8 +1,8 @@
-// color siders
+// color sliders
 var red_slider = document.getElementById("red_slider");
 var green_slider = document.getElementById("green_slider");
 var blue_slider = document.getElementById("blue_slider");
-var boxModel = document.getElementById("boxModel");
+var alpha_slider = document.getElementById("alpha_slider");
 
 var color_sliders = document.getElementsByClassName("color_slider");
 // assign event listener to each slider to change color of box model
@@ -10,18 +10,26 @@ for (var i = 0; i < color_sliders.length; i++) {
     color_sliders[i].oninput = changeColor;
 }
 
+// box model
+var boxModel = document.getElementById("boxModel");
+
 // assign border functions
 document.getElementById("borderRadiusSlider").oninput = changeBorderRadius;
 document.getElementById("borderWidthSlider").oninput = changeBorderWidth;
+document.getElementById("borderStyles").oninput = changeBorderStyle;
 
-// assign box model functions
+// assign box functions
 document.getElementById("boxWidthSlider").oninput = changeWidth;
 document.getElementById("boxHeightSlider").oninput = changeHeight;
+
+// assign text functions
+document.getElementById("textSizeSlider").oninput = changeTextSize;
 
 // Change color of box model when clicked
 function changeColor(){
     boxModel.style.backgroundColor = "rgb(" + red_slider.value + "," 
-        + green_slider.value + "," + blue_slider.value + ")";
+        + green_slider.value + "," + blue_slider.value + "," 
+        + alpha_slider.value + ")";
     
     // update RGB values
     updateRGBValues();
@@ -31,11 +39,12 @@ function changeColor(){
     changeTextColor();
 }
 
-// update RGB values
+// update RGBA values
 function updateRGBValues(){
     document.getElementById("redValue").innerHTML = red_slider.value;
     document.getElementById("greenValue").innerHTML = green_slider.value;
     document.getElementById("blueValue").innerHTML = blue_slider.value;
+    document.getElementById("alphaValue").innerHTML = alpha_slider.value;
 }
 
 // Convert RGB to HEX
@@ -83,4 +92,17 @@ function changeHeight(){
     var height = document.getElementById("boxHeightSlider").value;
     boxModel.style.height = height + "px";
     document.getElementById("boxHeightValue").innerHTML = height;
+}
+
+// Change text size
+function changeTextSize(){
+    var textSize = document.getElementById("textSizeSlider").value;
+    boxModel.style.fontSize = textSize + "px";
+    document.getElementById("textSizeValue").innerHTML = textSize;
+}
+
+// Change border style
+function changeBorderStyle(){
+    var borderStyle = document.getElementById("borderStyles").value;
+    boxModel.style.borderStyle = borderStyle;
 }
