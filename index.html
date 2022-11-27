@@ -10,14 +10,17 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id = "boxModel"></div>
+        <div id = "boxModel"><div id="hexValue">#000000</div></div>
         <div class="box sliders">
             <h3>Colors</h3>
-            Hex value: <div id="hexValue">#000000</div>
-            <br>
-            R: <input type="range" min="0" max="255" value="0" class="color_slider" id="red_slider">
-            G: <input type="range" min="0" max="255" value="0" class="color_slider" id="green_slider">
-            B: <input type="range" min="0" max="255" value="0" class="color_slider" id="blue_slider">
-          </div>
+            Red: <input type="range" min="0" max="255" value="0" class="color_slider" id="red_slider">
+            Green: <input type="range" min="0" max="255" value="0" class="color_slider" id="green_slider">
+            Blue: <input type="range" min="0" max="255" value="0" class="color_slider" id="blue_slider">
+        </div>
+        <div class="slider_values">
+            <div id="red_value">0</div>
+            <div id="green_value">0</div>
+            <div id="blue_value">0</div>
+        </div>
     </body>
 </html>
