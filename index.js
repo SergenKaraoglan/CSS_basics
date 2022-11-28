@@ -62,10 +62,13 @@ function changeTextColor(){
     var red = parseInt(red_slider.value);
     var green = parseInt(green_slider.value);
     var blue = parseInt(blue_slider.value);
-    if (green > 200 && blue > 50 || green > 200 && red > 50 || green > 230) {
-        boxModel.style.color = "black";
-    } else {
+    var alpha = parseFloat(alpha_slider.value);
+
+    // calculate luminance
+    if ((0.2126*red + 0.7152*green + 0.0722*blue) < 128 && alpha > 0.5) {
         boxModel.style.color = "white";
+    } else {
+        boxModel.style.color = "black";
     }
 }
 
