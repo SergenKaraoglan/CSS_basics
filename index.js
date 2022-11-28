@@ -24,6 +24,9 @@ document.getElementById("boxHeightSlider").oninput = changeHeight;
 
 // assign text functions
 document.getElementById("textSizeSlider").oninput = changeTextSize;
+document.getElementById("textAlign").oninput = changeTextAlignment;
+document.getElementById("fontStyles").oninput = changeFontStyle;
+
 
 // Change color of box model when clicked
 function changeColor(){
@@ -105,4 +108,16 @@ function changeTextSize(){
 function changeBorderStyle(){
     var borderStyle = document.getElementById("borderStyles").value;
     boxModel.style.borderStyle = borderStyle;
+}
+
+// Change text alignment
+function changeTextAlignment(){
+    var textAlign = document.getElementById("textAlign").value;
+    boxModel.style.textAlign = textAlign;
+}
+
+// Change font style
+function changeFontStyle(){
+    var fontStyle = document.getElementById("fontStyles").value;
+    boxModel.style.fontFamily = fontStyle;
 }

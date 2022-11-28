@@ -50,6 +50,8 @@
                                         <option value="dotted">Dotted</option>
                                         <option value="dashed">Dashed</option>
                                         <option value="double">Double</option>
+                                        <option value="inset">Inset</option>
+                                        <option value="outset">Outset</option>
                                     </select>
                 </div>
                 <div class="borderValues">
@@ -62,11 +64,24 @@
             <div class ="text">
                 <div class="textSliders">
                     <h3>Text</h3>
-                    Size: <input type="range" min="0" max="100" value="0" class="text_slider" id="textSizeSlider">
+                    Size: <input type="range" min="0" max="100" value="16" class="text_slider" id="textSizeSlider">
                     Spacing: <input type="range" min="0" max="100" value="0" class="text_slider" id="textSpacingSlider">
+                    Font Styles: <select name="fontStyles" id="fontStyles">
+                                        <option value="Arial">Arial</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Courier New">Courier New</option>
+                                        <option value="Verdana">Verdana</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Impact">Impact</option>
+                                    </select>
+                    Text Align: <select name="textAlign" id="textAlign">
+                                        <option value="center">Center</option>
+                                        <option value="left">Left</option>
+                                        <option value="right">Right</option>
+                                    </select>
                 </div>
                 <div class="textValues">
-                    <span id="textSizeValue">0</span>
+                    <span id="textSizeValue">16</span>
                     <span id="textSpacingValue">0</span>
                 </div>
             </div>
