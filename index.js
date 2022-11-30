@@ -1,17 +1,20 @@
-// color sliders
-var red_slider = document.getElementById("red_slider");
-var green_slider = document.getElementById("green_slider");
-var blue_slider = document.getElementById("blue_slider");
-var alpha_slider = document.getElementById("alpha_slider");
+// box models
+var boxModels = document.getElementsByClassName("boxModel");
 
-var color_sliders = document.getElementsByClassName("color_slider");
+// hex values
+var hexValues = document.getElementsByClassName("hexValue");
+
+// color sliders
+var red_slider = document.getElementById("redSlider");
+var green_slider = document.getElementById("greenSlider");
+var blue_slider = document.getElementById("blueSlider");
+var alpha_slider = document.getElementById("alphaSlider");
+
+var color_sliders = document.getElementsByClassName("colorSliders");
 // assign event listener to each slider to change color of box model
 for (var i = 0; i < color_sliders.length; i++) {
     color_sliders[i].oninput = changeColor;
 }
-
-// box model
-var boxModel = document.getElementById("boxModel");
 
 // assign border functions
 document.getElementById("borderRadiusSlider").oninput = changeBorderRadius;
@@ -27,10 +30,71 @@ document.getElementById("textSizeSlider").oninput = changeTextSize;
 document.getElementById("textAlign").oninput = changeTextAlignment;
 document.getElementById("fontStyles").oninput = changeFontStyle;
 
+// change box quantity
+document.getElementById("boxQuantity").oninput = changeBoxQuantity;
+var boxQuantity = 1;
+
+// select box
+document.getElementById("boxSelect").oninput = selectBox;
+var curBox = 1;
+
+// change style display
+document.getElementById("styleToggle").oninput = toggleStyleDisplay;
+
+// assign grid functions
+document.getElementById("gridGap").oninput = changeGridGap;
+
+
+
+// Change box quantity
+function changeBoxQuantity(){
+    var newBoxQuantity = document.getElementById("boxQuantity").value;
+    var boxContainer = document.getElementById("boxContainer");
+    if (newBoxQuantity > boxQuantity) {
+        for (var i = boxQuantity; i < newBoxQuantity; i++){
+            boxContainer.innerHTML += "<div class ='boxModel'><div class='hexValue'>#000000</div></div>";
+        }
+    }
+    else{
+        for (var i = boxQuantity; i > newBoxQuantity; i--){
+            boxContainer.removeChild(boxContainer.lastChild);
+        }
+    }
+
+    boxQuantity = newBoxQuantity;
+    updateBoxClasses();
+}
+
+// update class values of each box
+function updateBoxClasses(){
+    hexValues = document.getElementsByClassName("hexValue");
+    boxModels = document.getElementsByClassName("boxModel");
+} 
+
+// Select box
+function selectBox(){
+    curBox = document.getElementById("boxSelect").value;
+}
+
+// Toggle style display
+function toggleStyleDisplay(){
+    var styleDisplay = document.getElementById("styleToggle").value;
+    gridDisplay = document.getElementById("gridStyles");
+    boxDisplay = document.getElementById("boxStyles");
+
+    if (styleDisplay == 'Grid'){
+        gridDisplay.style.display = "block";
+        boxDisplay.style.display = "none";
+    }
+    else{
+        gridDisplay.style.display = "none";
+        boxDisplay.style.display = "block";
+    }
+}
 
 // Change color of box model when clicked
 function changeColor(){
-    boxModel.style.backgroundColor = "rgb(" + red_slider.value + "," 
+    boxModels[curBox-1].style.backgroundColor = "rgb(" + red_slider.value + "," 
         + green_slider.value + "," + blue_slider.value + "," 
         + alpha_slider.value + ")";
     
@@ -38,7 +102,7 @@ function changeColor(){
     updateRGBValues();
 
     // Convert RGB to HEX
-    document.getElementById("hexValue").innerHTML = convertRGBToHex();
+    hexValues[curBox-1].innerHTML = convertRGBToHex();
     changeTextColor();
 }
 
@@ -66,61 +130,67 @@ function changeTextColor(){
 
     // calculate luminance
     if ((0.2126*red + 0.7152*green + 0.0722*blue) < 128 && alpha > 0.5) {
-        boxModel.style.color = "white";
+        boxModels[curBox-1].style.color = "white";
     } else {
-        boxModel.style.color = "black";
+        boxModels[curBox-1].style.color = "black";
     }
 }
 
 // Change border radius of box model
 function changeBorderRadius(){
     var borderRadius = document.getElementById("borderRadiusSlider").value;
-    boxModel.style.borderRadius = borderRadius + "px";
+    boxModels[curBox-1].style.borderRadius = borderRadius + "px";
     document.getElementById("borderRadiusValue").innerHTML = borderRadius;
 }
 
 // Change border width of box model
 function changeBorderWidth(){
     var borderWidth = document.getElementById("borderWidthSlider").value;
-    boxModel.style.borderWidth = borderWidth + "px";
+    boxModels[curBox-1].style.borderWidth = borderWidth + "px";
     document.getElementById("borderWidthValue").innerHTML = borderWidth;
 }
 
-// Change boxModel width
+// Change boxModels[curBox-1] width
 function changeWidth(){
     var width = document.getElementById("boxWidthSlider").value;
-    boxModel.style.width = width + "px";
+    boxModels[curBox-1].style.width = width + "px";
     document.getElementById("boxWidthValue").innerHTML = width;
 }
 
-// Change boxModel height
+// Change boxModels[curBox-1] height
 function changeHeight(){
     var height = document.getElementById("boxHeightSlider").value;
-    boxModel.style.height = height + "px";
+    boxModels[curBox-1].style.height = height + "px";
     document.getElementById("boxHeightValue").innerHTML = height;
 }
 
 // Change text size
 function changeTextSize(){
     var textSize = document.getElementById("textSizeSlider").value;
-    boxModel.style.fontSize = textSize + "px";
+    boxModels[curBox-1].style.fontSize = textSize + "px";
     document.getElementById("textSizeValue").innerHTML = textSize;
 }
 
 // Change border style
 function changeBorderStyle(){
     var borderStyle = document.getElementById("borderStyles").value;
-    boxModel.style.borderStyle = borderStyle;
+    boxModels[curBox-1].style.borderStyle = borderStyle;
 }
 
 // Change text alignment
 function changeTextAlignment(){
     var textAlign = document.getElementById("textAlign").value;
-    boxModel.style.textAlign = textAlign;
+    boxModels[curBox-1].style.textAlign = textAlign;
 }
 
 // Change font style
 function changeFontStyle(){
     var fontStyle = document.getElementById("fontStyles").value;
-    boxModel.style.fontFamily = fontStyle;
+    boxModels[curBox-1].style.fontFamily = fontStyle;
+}
+
+function changeGridGap(){
+    var gridGap = document.getElementById("gridGap").value;
+    document.getElementById("boxContainer").style.gap = gridGap + "px";
+    //document.getElementById("gridGapValue").innerHTML = gridGap;
 }

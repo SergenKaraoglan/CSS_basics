@@ -10,26 +10,59 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id = "boxModel"><div id="hexValue">#000000</div></div>
-
-        <div>
-            <select name="styleTypes" id="styleTypes">
-                <option value="Color">Color</option>
-                <option value="Border">Border</option>
-                <option value="Text">Text</option>
-                <option value="BoxModel">Box Model</option>
-            </select>
+        <!-- box interface -->
+        <div id="boxContainer">
+            <div class ="boxModel"><div class="hexValue">#000000</div></div>
         </div>
         
-        <div class="styleValues">
+        <!-- style types -->
+        <div>
+            <select name="styleToggle" id="styleToggle">
+                <option value="Box">Box</option>
+                <option value="Grid">Grid</option>
+            </select>
+        </div>
+
+        <div>
+            Number of boxes: <select name="boxQuantity" id="boxQuantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+
+            </select>
+        </div>
+
+        <div>
+            Select box: <select name="boxSelect" id="boxSelect">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+        </div>
+
+        <!-- style properties for grid -->
+        <div id="gridStyles">
+            <div class="gridGap">
+                <label for="gridGap">Grid gap:</label>
+                <input type="range" id="gridGap" name="gridGap" min="0" max="100" value="0">
+            </div>
+        </div>
+
+        <!-- style properties for box -->
+        <div id="boxStyles">
             <!-- Color options -->
             <div class ="color">
                 <div class="colorSliders">
                     <h3>Colors</h3>
-                    Red: <input type="range" min="0" max="255" value="0" class="color_slider" id="red_slider">
-                    Green: <input type="range" min="0" max="255" value="0" class="color_slider" id="green_slider">
-                    Blue: <input type="range" min="0" max="255" value="0" class="color_slider" id="blue_slider">
-                    Alpha: <input type="range" min="0" max="1" step="0.01" value="1" class="color_slider" id="alpha_slider">
+                    Red: <input type="range" min="0" max="255" value="0" class="color_slider" id="redSlider">
+                    Green: <input type="range" min="0" max="255" value="0" class="color_slider" id="greenSlider">
+                    Blue: <input type="range" min="0" max="255" value="0" class="color_slider" id="blueSlider">
+                    Alpha: <input type="range" min="0" max="1" step="0.01" value="1" class="color_slider" id="alphaSlider">
                 </div>
                 <div class="colorValues">
                     <span id="redValue">0</span>
@@ -101,7 +134,7 @@
                     <span id="boxHeightValue">100</span>
                 </div>
             </div>
-        </div>
 
+        </div>
     </body>
 </html>

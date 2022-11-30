@@ -7,7 +7,15 @@ body {
     background-color: #fafafa;
 }
 
-#boxModel {
+#boxContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.boxModel {
     background-color: rgba(0,0,0,1);
     width: 200px;
     height: 100px;
@@ -20,8 +28,6 @@ body {
     overflow: hidden;
 }
 
-.styleValues{
-    margin: auto;
-    top: 200px;
-    left: 250px;
+#gridStyles {
+    display: none;
 }
